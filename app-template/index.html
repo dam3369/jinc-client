@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>T-ou</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h1>T-ou</h1>
+                <img id="arrow" class="rotate-transitio"n src="image/arrow.png">
+                <button id="btn-opera" type="button" class="btn btn-default btn-lg">opera</button>
+                <button id="btn-house" type="button" class="btn btn-default btn-lg">maison</button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="prompt">
+                <input type="text" id="lat" value="0">
+                <input type="text" id="lng" value="0">
+                <input type="text" id="spd" value="0">
+            </div>
+        </div>
+    </div>
+    <script src="javascript/jQuery.min.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="javascript/arrow.js" type="text/javascript"></script>
+    <script src="javascript/point.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        screen.mozLockOrientation("portrait-primary");
+
+        var opera = point.create([
+            48.870558,
+            2.332322
+        ]);
+
+        var house = point.create([
+            48.843974,
+            2.355113
+        ]);
+
+        var target = opera;
+
+        var me = false;
+
+        if ("geolocation" in navigator) {
+
+            window.ondeviceorientation = function (event) {
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    me = point.create(position.coords);
+                });
+
+                if (me !== false) {
+                    delta = me.getDelta(target, event.alpha);
+                }
+
+                arrow.rotate((Math.PI * window.delta / 180));
+            };
+        }
+    </script>
+</body>
+</html>

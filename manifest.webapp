@@ -1,0 +1,34 @@
+{
+  "version": "0.1",
+  "name": "T-ou",
+  "description": "Retrieve your friends quickly",
+  "launch_path": "/app-template/index.html",
+  "type": "web",
+  "orientation": ["portrait"],
+  "permissions": {
+    "contacts": {
+      "description": "To retrieve your friend"
+    },
+    "geolocation": {
+      "description": "To get your location"
+    }
+  },
+  "icons": {
+    "16": "/app-template/app-icons/icon-16.png",
+    "48": "/app-template/app-icons/icon-48.png",
+    "128": "/app-template/app-icons/icon-128.png"
+  },
+  "developer": {
+    "name": "Nicolas Dufreche",
+    "url": "http://the.12.gy"
+  },
+  "locales": {
+    "fr": {
+      "description": "Retrouve tes amis en un instant",
+      "developer": {
+        "url": "http://tou.12.gy"
+      }
+    }
+  },
+  "default_locale": "fr"
+}

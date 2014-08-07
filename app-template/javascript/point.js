@@ -6,26 +6,14 @@
 
     computeAlpha = function (x, y) {
         var alpha = 0,
-            xIsPos = (x === Math.abs(x)),
-            yIsPos = (y === Math.abs(y)),
             h = hypot(x, y);
+
+            jQuery('#prompt #hyp').val(Math.round(Math.abs(x) * 100000) + ' / ' + Math.round(h * 100000));
 
         if (x === y) {
             alpha = 45;
-        } else if (x > y) {
-            alpha = Math.asin(y/h);
-            jQuery('#prompt #lat').val('x sup y');
-
-            if ((xIsPos && yIsPos) || (!xIsPos && !yIsPos)) {
-                alpha = 90 - alpha;
-            }
-        } else if (x < y) {
-            jQuery('#prompt #lat').val('x inf y');
-            alpha = Math.asin(x/h);
-
-            if ((xIsPos && !yIsPos) || (!xIsPos && yIsPos)) {
-                alpha = 90 - alpha;
-            }
+        } else {
+            alpha = (Math.acos(Math.abs(x)/h) * 180 / Math.PI);
         }
 
         return alpha;
@@ -36,17 +24,6 @@
             xIsPos = (x === Math.abs(x)),
             yIsPos = (y === Math.abs(y));
 
-        if (xIsPos) {
-            jQuery('#prompt #lng').val('x positif');
-        } else {
-            jQuery('#prompt #lng').val('x negatif');
-        }
-        if (yIsPos) {
-            jQuery('#prompt #spd').val('y positif');
-        } else {
-            jQuery('#prompt #spd').val('y negatif');
-        }
-
         if (x === 0 || y === 0) {
             if (x === 0 && yIsPos) {
                 beta = 0;
@@ -56,20 +33,16 @@
                 beta = 90;
             } else if (!xIsPos && y === 0) {
                 beta = 270;
-            } else {
-                console.log('error');
             }
         } else {
             if (xIsPos && yIsPos) {
-                beta = alpha;
+                beta = 90 - alpha;
             } else if (xIsPos && !yIsPos) {
                 beta = 90 + alpha;
             } else if (!xIsPos && yIsPos) {
                 beta = 270 + alpha;
             } else if (!xIsPos && !yIsPos) {
-                beta = 180 + alpha;
-            } else {
-                console.log('error');
+                beta = 270 - alpha;
             }
         }
 
@@ -77,23 +50,21 @@
     },
 
     computeDelta = function (pointA, pointB, gamma) {
-        var x = pointA.getX() - pointB.getX(),
-            y = pointA.getY() - pointB.getY(),
-            alpha = computeAlpha(x, y);
-            beta = Math.abs(computeBeta(x, y, alpha));
+        var x = pointB.getX() - pointA.getX(),
+            y = pointB.getY() - pointA.getY(),
+            alpha = computeAlpha(x, y),
+            beta = computeBeta(x, y, alpha);
 
-        if (beta > gamma) {
-            return -(beta - gamma);
-        } else if (beta < gamma) {
-            return (gamma - beta);
-        } else {
-            return 0;
-        }
+        jQuery('#prompt #lat').val(gamma);
+        jQuery('#prompt #lng').val(beta);
+        jQuery('#prompt #spd').val(alpha);
+
+        return (beta - gamma);
     },
 
     computeHypot = function (pointA, pointB) {
-        var x = pointA.getX() - pointB.getX(),
-            y = pointA.getY() - pointB.getY();
+        var x = pointB.getX() - pointA.getX(),
+            y = pointB.getY() - pointA.getY();
 
         return hypot(x, y);
     },

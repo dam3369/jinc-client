@@ -18,6 +18,8 @@
                 <img id="arrow" class="rotate-transitio"n src="image/arrow.png">
                 <button id="btn-opera" type="button" class="btn btn-default btn-lg">opera</button>
                 <button id="btn-house" type="button" class="btn btn-default btn-lg">maison</button>
+                <button id="btn-work" type="button" class="btn btn-default btn-lg">taf</button>
+                <button id="btn-eiffel" type="button" class="btn btn-default btn-lg">eiffel</button>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -26,6 +28,7 @@
                 <input type="text" id="lat" value="0">
                 <input type="text" id="lng" value="0">
                 <input type="text" id="spd" value="0">
+                <input type="text" id="hyp" value="0">
             </div>
         </div>
     </div>
@@ -38,34 +41,52 @@
         screen.mozLockOrientation("portrait-primary");
 
         var opera = point.create([
-            48.870558,
-            2.332322
-        ]);
-
-        var house = point.create([
-            48.843974,
-            2.355113
-        ]);
-
-        var target = opera;
-
-        var me = false;
+                48.870485,
+                2.332379
+            ]),
+            house = point.create([
+                48.843976,
+                2.355059
+            ]),
+            work = point.create([
+                48.869470,
+                2.337584
+            ]),
+            eiffel = point.create([
+                48.858363,
+                2.294452
+            ]),
+            target = opera,
+            me = false,
+            delta = 0;
 
         if ("geolocation" in navigator) {
+            navigator.geolocation.watchPosition(function (position) {
+                me = point.create(position.coords);
+            });
 
             window.ondeviceorientation = function (event) {
 
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    me = point.create(position.coords);
-                });
-
                 if (me !== false) {
-                    delta = me.getDelta(target, event.alpha);
+                    delta = (me.getDelta(target, (360 - event.alpha)) * Math.PI / 180);
                 }
 
-                arrow.rotate((Math.PI * window.delta / 180));
+                arrow.rotate(delta);
             };
         }
+
+        jQuery('#btn-house').click(function () {
+            target = house;
+        });
+        jQuery('#btn-opera').click(function () {
+            target = opera;
+        });
+        jQuery('#btn-work').click(function () {
+            target = work;
+        });
+        jQuery('#btn-eiffel').click(function () {
+            target = eiffel;
+        });
     </script>
 </body>
 </html>

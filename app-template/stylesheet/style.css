@@ -1,0 +1,199 @@
+.circle {
+    border-radius: 100%;
+    margin: auto;
+    background-color: #95A5A6;
+}
+
+.border {
+    height: 0;
+    width: 0;
+    background-color: transparent;
+}
+
+.header {
+    widows: 100%;
+}
+
+.text {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #95A5A6;
+}
+
+.logo {
+    position: fixed;
+    font-weight: bold;
+    top: 1%;
+    left: 3%;
+}
+
+.distance {
+    position: fixed;
+}
+
+.wallpaper {
+    background-color:#ECF0F1;
+    height: 100%;
+    width: 100%;
+}
+
+.accuracy {
+    position: fixed;
+    background-color: transparent;
+    border: 4px #95A5A6 solid;
+    border-radius: 100%;
+}
+
+
+.arrow-top {
+    border-top: 0 solid  transparent;
+    margin-top: -2%;
+}
+
+.arrow {
+    width:0;
+    height:0;
+}
+
+.accuracy-hight {
+    right: 9px;
+    top: 9px;
+    height: 28px;
+    width: 28px;
+}
+
+.accuracy-medium {
+    right: 16px;
+    top: 16px;
+    height: 14px;
+    width: 14px;
+}
+
+.accuracy-low {
+    right: 23px;
+    top: 23px;
+    height: 0px;
+    width: 0px;
+}
+
+.list {
+    margin: 0 5%;
+}
+
+.list li {
+    margin: 10% 0;
+}
+
+.btn {
+    width: 100%;
+    border-radius: 10px;
+    font-size: 17px;
+    line-height: 1.471;
+    padding: 10px 19px;
+    font-weight: bold;
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: medium none;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn.text {
+    font-size: 2em;
+}
+
+@media screen and (orientation: landscape) {
+    .distance {
+        right: 3%;
+        bottom: 2%;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .distance {
+        left: 3%;
+        bottom: 7%;
+    }
+}
+
+/* 
+ * Active target swap color 
+ */
+.inactive .arrow-top {
+    border-bottom-color: #FDE3A7;
+}
+
+.inactive.wallpaper {
+    background-color: #FDE3A7;
+}
+
+.inactive .text {
+    color: #F89406;
+}
+.inactive .circle{
+    background-color: #F89406;
+}
+.inactive .accuracy {
+    border-color: #F89406;
+}
+.inactive .arrow-tail {
+    border-bottom-color: #F89406;
+}
+
+/*
+ * Inactive target swap color
+ */
+.active .arrow-top {
+    border-bottom-color: #C8F7C5;
+}
+
+.active.wallpaper {
+    background-color: #C8F7C5;
+}
+
+.active .text {
+    color: #1abc9c;
+}
+.active .circle{
+    background-color: #1abc9c;
+}
+.active .accuracy {
+    border-color: #1abc9c;
+}
+.active .arrow-tail {
+    border-bottom-color: #1abc9c;
+}
+
+/*
+ * transition and rotations
+ */
+.text {
+    transition: color 4s;
+}
+.wallpaper,
+.circle {
+    transition: background-color 4s;
+}
+.arrow,
+.accuracy {
+    transition: border-color 4s;
+}
+
+#arrow:hover {
+    transform: rotate(180deg);
+}
+
+#arrow:hover {
+    transition: transform 2s;
+}
+
+.home .arrow-top,
+.home.wallpaper {
+    background-color: #C8F7C5;
+}
+
+.home .text {
+    color: #fff;
+}
+
+.home .text.logo {
+    color: #1abc9c;
+}

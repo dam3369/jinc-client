@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>J'inc!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet/reset.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheet/style-360-640.css">
+    <link rel="stylesheet" href="stylesheet/style-768-1024.css">
+    <link rel="stylesheet" type="text/css" type="text/css" href="stylesheet/style-800-1280.css">
+</head>
+<body>
+    <div id="wallpaper" class="wallpaper active">
+        <div class="container">
+            <header class="header">
+                <h1 class="logo text"><a href="index.html">J'inc!</a></h1>
+                <div class="accuracy accuracy-hight">
+                    <div class="accuracy accuracy-medium">
+                        <div class="accuracy accuracy-low"></div>
+                    </div>
+                </div>
+            </header>
+            <div id="arrow" class="circle rotate">
+                <div class="arrow arrow-top border"></div>
+                <div class="arrow arrow-tail border"></div>
+            </div>
+            <footer id="distance" class="distance text">
+                <p><span id="number" data-value="0">0</span> <span id="unit" data-unit="metric">m</span></p>
+            </footer>
+        </div>
+    </div>
+    <script type="text/javascript" src="javascript/jinc-ui.js"></script>
+    <script type="text/javascript" src="javascript/point.js"></script>
+    <script type="text/javascript">
+        document.getElementById('distance').onclick = changeUnit;
+        screen.mozLockOrientation("portrait-primary");
+
+        var opera = point.create([
+                48.870485,
+                2.332379
+            ]),
+            house = point.create([
+                48.843976,
+                2.355059
+            ]),
+            work = point.create([
+                48.869470,
+                2.337584
+            ]),
+            eiffel = point.create([
+                48.858363,
+                2.294452
+            ]),
+            target = opera,
+            me = false,
+            delta = 0;
+
+        if (window.location.hash === '#house') {
+            target = house;
+        }
+
+        if (window.location.hash === '#opera') {
+            target = opera;
+        }
+
+        if (window.location.hash === '#work') {
+            target = work;
+        }
+
+        if (window.location.hash === '#btn-eiffel') {
+            target = eiffel;
+        }
+
+        if ("geolocation" in navigator) {
+            navigator.geolocation.watchPosition(function (position) {
+                me = point.create(position.coords);
+            });
+
+            window.ondeviceorientation = function (event) {
+
+                if (me !== false) {
+                    delta = (me.getDelta(target, (360 - event.alpha)) * Math.PI / 180);
+                    printDistance(me.getDistance(target));
+                }
+
+                arrow.rotate(delta);
+            };
+        }
+    </script>
+</body>
+</html>

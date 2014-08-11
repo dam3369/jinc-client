@@ -8,8 +8,6 @@
         var alpha = 0,
             h = hypot(x, y);
 
-            jQuery('#prompt #hyp').val(Math.round(Math.abs(x) * 100000) + ' / ' + Math.round(h * 100000));
-
         if (x === y) {
             alpha = 45;
         } else {
@@ -54,10 +52,6 @@
             y = pointB.getY() - pointA.getY(),
             alpha = computeAlpha(x, y),
             beta = computeBeta(x, y, alpha);
-
-        jQuery('#prompt #lat').val(gamma);
-        jQuery('#prompt #lng').val(beta);
-        jQuery('#prompt #spd').val(alpha);
 
         return (beta - gamma);
     },

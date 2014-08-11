@@ -1,0 +1,51 @@
+@media screen and (max-width: 800px) and (max-height: 1280px) {
+    .container {
+        height: 1280px;
+        width: 800px;
+    }
+
+    .header {
+        height: 50px;
+        margin-bottom: 250px;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height: 800px) {
+    .container {
+        height: 800px;
+        width: 1280px;
+    }
+
+    .header {
+        height: 50px;
+        margin-bottom: 45px;
+    }
+}
+
+.circle {
+    padding: 120px;
+    width: 340px;
+    height: 340px;
+}
+
+.arrow-top {
+    border-bottom: 325px solid #ECF0F1;
+}
+
+.arrow {
+    border-left: 170px solid  transparent;
+    border-right: 170px solid  transparent;
+}
+
+.arrow-tail {
+    border-bottom: 50px solid #95A5A6;
+    margin-top: -50px;
+}
+
+.distance {
+    font-size: 10em;
+}
+
+.logo {
+    font-size: 4em;
+}

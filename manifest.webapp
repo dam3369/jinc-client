@@ -13,6 +13,7 @@
       "description": "To get your location"
     }
   },
+  "fullscreen": "true",
   "icons": {
     "16": "/app-template/app-icons/icon-16.png",
     "48": "/app-template/app-icons/icon-48.png",

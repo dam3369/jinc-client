@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(../font/open-sans-condensed.woff) format('woff');
+}
+
+
+a {
+    text-decoration: none;
+}
+
 .circle {
     border-radius: 100%;
     margin: auto;
@@ -14,14 +26,15 @@
     widows: 100%;
 }
 
+.logo a,
 .text {
     font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: normal;
     color: #95A5A6;
 }
 
 .logo {
     position: fixed;
-    font-weight: bold;
     top: 1%;
     left: 3%;
 }
@@ -95,7 +108,9 @@
     border: medium none;
     text-align: center;
     vertical-align: middle;
+    display: block;
 }
+
 .btn.text {
     font-size: 2em;
 }
@@ -114,17 +129,17 @@
     }
 }
 
-/* 
- * Active target swap color 
+/**
+ * Inactive target swap color
  */
 .inactive .arrow-top {
     border-bottom-color: #FDE3A7;
 }
-
 .inactive.wallpaper {
     background-color: #FDE3A7;
 }
 
+.inactive .logo a,
 .inactive .text {
     color: #F89406;
 }
@@ -138,17 +153,17 @@
     border-bottom-color: #F89406;
 }
 
-/*
- * Inactive target swap color
+/**
+ * Active target swap color
  */
 .active .arrow-top {
     border-bottom-color: #C8F7C5;
 }
-
 .active.wallpaper {
     background-color: #C8F7C5;
 }
 
+.active .logo a,
 .active .text {
     color: #1abc9c;
 }
@@ -162,7 +177,7 @@
     border-bottom-color: #1abc9c;
 }
 
-/*
+/**
  * transition and rotations
  */
 .text {
@@ -177,14 +192,9 @@
     transition: border-color 4s;
 }
 
-#arrow:hover {
-    transform: rotate(180deg);
-}
-
-#arrow:hover {
-    transition: transform 2s;
-}
-
+/**
+ * Home
+ */
 .home .arrow-top,
 .home.wallpaper {
     background-color: #C8F7C5;

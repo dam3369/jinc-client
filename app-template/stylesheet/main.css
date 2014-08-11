@@ -1,8 +1,0 @@
-h1 {
-    color: red;
-}
-
-.rotate-transition {
-    -moz-transition: rotate 1s;
-    transition: rotate 1s;
-}

@@ -60,7 +60,7 @@
         var x = pointB.getX() - pointA.getX(),
             y = pointB.getY() - pointA.getY();
 
-        return hypot(x, y);
+        return hypot(x, y) * 100000;
     },
 
     Point = function () {

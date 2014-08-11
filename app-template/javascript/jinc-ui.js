@@ -30,6 +30,8 @@
         };
 
     window.printDistance = function (distance) {
+        distance = Math.round(distance);
+
         if (distance === undefined && element.number.dataset.value !== undefined) {
             distance = element.number.dataset.value
         } else if (distance === undefined) {

@@ -5,27 +5,41 @@
   src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(../font/open-sans-condensed.woff) format('woff');
 }
 
+html, body
+{
+    height: 100%;
+}
 
 a {
     text-decoration: none;
 }
 
+.distance {
+    font-size: 5em;
+}
+
+.logo {
+    font-size: 3em;
+}
+
 .container {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
 .arrow-container {
-    border-radius: 100%;
     margin: auto;
-}
-
-.arrow {
-    height: 200px;
-    width: 200px;
+    display: block;
 }
 
 .arrow path {
-    fill: #95A5A6;
+    fill: #6C7A89;
+}
+
+.arrow {
+    height: 100%;
+    width: 100%;
 }
 
 .border {
@@ -42,7 +56,7 @@ a {
 .text {
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: normal;
-    color: #95A5A6;
+    color: #6C7A89;
 }
 
 .logo {
@@ -56,37 +70,10 @@ a {
 }
 
 .wallpaper {
+    overflow: hidden;
     background-color:#ECF0F1;
     height: 100%;
     width: 100%;
-}
-
-.accuracy {
-    position: fixed;
-    background-color: transparent;
-    border: 4px #95A5A6 solid;
-    border-radius: 100%;
-}
-
-.accuracy-hight {
-    right: 9px;
-    top: 9px;
-    height: 28px;
-    width: 28px;
-}
-
-.accuracy-medium {
-    right: 16px;
-    top: 16px;
-    height: 14px;
-    width: 14px;
-}
-
-.accuracy-low {
-    right: 23px;
-    top: 23px;
-    height: 0px;
-    width: 0px;
 }
 
 .list {
@@ -117,6 +104,13 @@ a {
 }
 
 @media screen and (orientation: landscape) {
+    .arrow-container {
+        margin-top: 5%;
+    }
+    .arrow-container {
+        height: 80%;
+        width: auto;
+    }
     .distance {
         right: 3%;
         bottom: 2%;
@@ -124,9 +118,89 @@ a {
 }
 
 @media screen and (orientation: portrait) {
+    .arrow-container {
+        margin-top: 40%;
+    }
+    .arrow-container {
+        height: auto;
+        width: 80%;
+    }
     .distance {
         left: 3%;
         bottom: 7%;
+    }
+}
+
+/* -- device-aspect-ratio: 16/9 -- */
+@media screen and (device-aspect-ratio: 9/16) {
+    .arrow-container {
+        margin-top: 45%;
+    }
+}
+@media screen and (device-aspect-ratio: 16/9) {
+    .arrow-container {
+        margin-top: 6%;
+    }
+}
+
+/* -- device-aspect-ratio: 3/2 -- */
+@media screen and (device-aspect-ratio: 2/3) {
+    .arrow-container {
+        margin-top: 33%;
+    }
+}
+@media screen and (device-aspect-ratio: 3/2) {
+    .arrow-container {
+        margin-top: 5%;
+    }
+}
+
+/* -- device-aspect-ratio: 4/3 -- */
+@media screen and (device-aspect-ratio: 3/4) {
+    .arrow-container {
+        margin-top: 25%;
+    }
+}
+@media screen and (device-aspect-ratio: 4/3) {
+    .arrow-container {
+        margin-top: 7%;
+    }
+}
+
+/* -- device-aspect-ratio: 16/10 -- */
+@media screen and (device-aspect-ratio: 10/16) {
+    .arrow-container {
+        margin-top: 40%;
+    }
+}
+@media screen and (device-aspect-ratio: 16/10) {
+    .arrow-container {
+        margin-top: 6%;
+    }
+}
+
+/* -- device-aspect-ratio: 64/49 -- */
+@media screen and (device-aspect-ratio: 49/64) {
+    .arrow-container {
+        margin-top: 25%;
+    }
+}
+@media screen and (device-aspect-ratio: 64/49) {
+    .arrow-container {
+        margin-top: 7%;
+    }
+}
+
+
+/* -- device-aspect-ratio: 32/15 -- */
+@media screen and (device-aspect-ratio: 15/32) {
+    .arrow-container {
+        margin-top: 65%;
+    }
+}
+@media screen and (device-aspect-ratio: 32/15) {
+    .arrow-container {
+        margin-top: 4.5%;
     }
 }
 
@@ -139,13 +213,10 @@ a {
 
 .inactive .logo a,
 .inactive .text {
-    color: #F89406;
+    color: #F9690E;
 }
 .inactive .arrow path {
-    fill: #F89406;
-}
-.inactive .accuracy {
-    border-color: #F89406;
+    fill: #F9690E;
 }
 
 /**
@@ -157,13 +228,10 @@ a {
 
 .active .logo a,
 .active .text {
-    color: #1abc9c;
+    color: #00B16A;
 }
 .active .arrow path {
-    fill: #1abc9c;
-}
-.active .accuracy {
-    border-color: #1abc9c;
+    fill: #00B16A;
 }
 
 /**
@@ -176,9 +244,11 @@ a {
 .circle {
     transition: background-color 4s;
 }
-.arrow,
-.accuracy {
+.arrow {
     transition: border-color 4s;
+}
+.arrow path {
+    transition: fill 4s;
 }
 
 /**

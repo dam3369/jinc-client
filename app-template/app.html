@@ -65,7 +65,20 @@
             target = eiffel;
         }
 
-        if ("geolocation" in navigator) {
+        document.body.onresize = function () {
+            var height = document.body.clientHeight,
+                width = document.body.clientWidth,
+                margintop = 0;
+
+            if (height > width) {
+                margintop = (height - ((width/100)*80)) / 2;
+            } else {
+                margintop = (height - ((height/100)*80)) / 2;
+            }
+            document.getElementById('arrow').style.marginTop = margintop.toString() + 'px';
+        }
+
+        /*if ("geolocation" in navigator) {
             navigator.geolocation.watchPosition(function (position) {
                 me = point.create(position.coords);
             });
@@ -79,7 +92,7 @@
 
                 arrow.rotate(delta);
             };
-        }
+        }*/
     </script>
 </body>
 </html>

@@ -143,67 +143,6 @@ a {
     }
 }
 
-/* -- device-aspect-ratio: 3/2 -- */
-@media screen and (device-aspect-ratio: 2/3) {
-    .arrow-container {
-        margin-top: 33%;
-    }
-}
-@media screen and (device-aspect-ratio: 3/2) {
-    .arrow-container {
-        margin-top: 5%;
-    }
-}
-
-/* -- device-aspect-ratio: 4/3 -- */
-@media screen and (device-aspect-ratio: 3/4) {
-    .arrow-container {
-        margin-top: 25%;
-    }
-}
-@media screen and (device-aspect-ratio: 4/3) {
-    .arrow-container {
-        margin-top: 7%;
-    }
-}
-
-/* -- device-aspect-ratio: 16/10 -- */
-@media screen and (device-aspect-ratio: 10/16) {
-    .arrow-container {
-        margin-top: 40%;
-    }
-}
-@media screen and (device-aspect-ratio: 16/10) {
-    .arrow-container {
-        margin-top: 6%;
-    }
-}
-
-/* -- device-aspect-ratio: 64/49 -- */
-@media screen and (device-aspect-ratio: 49/64) {
-    .arrow-container {
-        margin-top: 25%;
-    }
-}
-@media screen and (device-aspect-ratio: 64/49) {
-    .arrow-container {
-        margin-top: 7%;
-    }
-}
-
-
-/* -- device-aspect-ratio: 32/15 -- */
-@media screen and (device-aspect-ratio: 15/32) {
-    .arrow-container {
-        margin-top: 65%;
-    }
-}
-@media screen and (device-aspect-ratio: 32/15) {
-    .arrow-container {
-        margin-top: 4.5%;
-    }
-}
-
 /**
  * Inactive target swap color
  */

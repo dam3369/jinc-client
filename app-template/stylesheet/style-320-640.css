@@ -1,4 +1,5 @@
 @media screen and (max-width: 320px) and (max-height: 640px) {
+    body,
     .container {
         height: 640px;
         width: 320px;
@@ -11,6 +12,7 @@
 }
 
 @media screen and (max-width: 640px) and (max-height: 320px) {
+    body,
     .container {
         height: 320px;
         width: 640px;

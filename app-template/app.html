@@ -19,9 +19,10 @@
                     </div>
                 </div>
             </header>
-            <div id="arrow" class="circle rotate">
-                <div class="arrow arrow-top border"></div>
-                <div class="arrow arrow-tail border"></div>
+            <div id="arrow" class="arrow-container rotate">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="arrow" width="100%" height="100%" viewBox="0 0 400 400">
+                    <path d="M200,200 m-200, 0 a200,200 0 1,0 400,0 a200,200 0 1,0 -400,0 M200,20 l150,275 l-150,-55 l-150,55 l150,-275"/>
+                </svg>
             </div>
             <footer id="distance" class="distance text">
                 <p><span id="number" data-value="0">0</span> <span id="unit" data-unit="metric">m</span></p>
@@ -54,7 +55,7 @@
             me = false,
             delta = 0;
 
-        if (window.location.hash === '#house') {
+        if (window.location.hash === '#home') {
             target = house;
         }
 
@@ -66,7 +67,7 @@
             target = work;
         }
 
-        if (window.location.hash === '#btn-eiffel') {
+        if (window.location.hash === '#eiffel') {
             target = eiffel;
         }
 

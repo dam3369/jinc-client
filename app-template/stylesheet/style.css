@@ -14,23 +14,29 @@ a {
     text-decoration: none;
 }
 
-.distance {
-    font-size: 5em;
+.container {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.logo a,
+.text {
+    color: #6C7A89;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: normal;
 }
 
 .logo {
     font-size: 3em;
-}
-
-.container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    left: 3%;
+    position: fixed;
+    top: 1%;
 }
 
 .arrow-container {
-    margin: auto;
     display: block;
+    margin: auto;
 }
 
 .arrow path {
@@ -39,40 +45,31 @@ a {
 
 .arrow {
     height: 100%;
+    opacity: 0.9%;
     width: 100%;
 }
 
 .border {
+    background-color: transparent;
     height: 0;
     width: 0;
-    background-color: transparent;
 }
 
 .header {
     widows: 100%;
 }
 
-.logo a,
-.text {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: normal;
-    color: #6C7A89;
-}
-
-.logo {
-    position: fixed;
-    top: 1%;
-    left: 3%;
-}
-
 .distance {
+    bottom: 2%;
+    right: 3%;
+    font-size: 4.5em;
     position: fixed;
 }
 
 .wallpaper {
-    overflow: hidden;
     background-color:#ECF0F1;
     height: 100%;
+    overflow: hidden;
     width: 100%;
 }
 
@@ -85,18 +82,18 @@ a {
 }
 
 .btn {
-    width: 100%;
+    background-color: #1abc9c;
+    border: medium none;
     border-radius: 10px;
+    color: #ffffff;
+    display: block;
     font-size: 17px;
+    font-weight: bold;
     line-height: 1.471;
     padding: 10px 19px;
-    font-weight: bold;
-    background-color: #1abc9c;
-    color: #ffffff;
-    border: medium none;
     text-align: center;
     vertical-align: middle;
-    display: block;
+    width: 100%;
 }
 
 .btn.text {
@@ -111,10 +108,6 @@ a {
         height: 80%;
         width: auto;
     }
-    .distance {
-        right: 3%;
-        bottom: 2%;
-    }
 }
 
 @media screen and (orientation: portrait) {
@@ -124,22 +117,6 @@ a {
     .arrow-container {
         height: auto;
         width: 80%;
-    }
-    .distance {
-        left: 3%;
-        bottom: 7%;
-    }
-}
-
-/* -- device-aspect-ratio: 16/9 -- */
-@media screen and (device-aspect-ratio: 9/16) {
-    .arrow-container {
-        margin-top: 45%;
-    }
-}
-@media screen and (device-aspect-ratio: 16/9) {
-    .arrow-container {
-        margin-top: 6%;
     }
 }
 
@@ -176,15 +153,12 @@ a {
 /**
  * transition and rotations
  */
+.logo a,
 .text {
     transition: color 4s;
 }
-.wallpaper,
-.circle {
+.wallpaper {
     transition: background-color 4s;
-}
-.arrow {
-    transition: border-color 4s;
 }
 .arrow path {
     transition: fill 4s;

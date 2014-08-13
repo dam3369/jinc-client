@@ -26,7 +26,7 @@
     <script type="text/javascript" src="javascript/jinc-ui.js"></script>
     <script type="text/javascript" src="javascript/point.js"></script>
     <script type="text/javascript">
-        document.getElementById('distance').onclick = changeUnit;
+        document.getElementById('distance').onclick = ui.changeUnit;
         screen.mozLockOrientation("portrait-primary");
 
         var opera = point.create([
@@ -65,20 +65,9 @@
             target = eiffel;
         }
 
-        document.body.onresize = function () {
-            var height = document.body.clientHeight,
-                width = document.body.clientWidth,
-                margintop = 0;
+        document.body.onresize = ui.onResizeWindow;
 
-            if (height > width) {
-                margintop = (height - ((width/100)*80)) / 2;
-            } else {
-                margintop = (height - ((height/100)*80)) / 2;
-            }
-            document.getElementById('arrow').style.marginTop = margintop.toString() + 'px';
-        }
-
-        /*if ("geolocation" in navigator) {
+        if ("geolocation" in navigator) {
             navigator.geolocation.watchPosition(function (position) {
                 me = point.create(position.coords);
             });
@@ -87,12 +76,12 @@
 
                 if (me !== false) {
                     delta = (me.getDelta(target, (360 - event.alpha)) * Math.PI / 180);
-                    printDistance(me.getDistance(target));
+                    ui.printDistance(me.getDistance(target));
                 }
 
-                arrow.rotate(delta);
+                ui.arrow.rotate(delta);
             };
-        }*/
+        }
     </script>
 </body>
 </html>

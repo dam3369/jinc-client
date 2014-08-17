@@ -57,7 +57,7 @@
             return (window.sessionStorage.getItem('old_hash') !== null);
         },
 
-        restoreOldSession = function () {
+        restoreOldSession: function () {
             window.sessionStorage.setItem('hash', window.sessionStorage.getItem('old_hash'));
             window.sessionStorage.setItem('track', window.sessionStorage.getItem('old_track'));
             window.sessionStorage.setItem('id', window.sessionStorage.getItem('old_id'));
@@ -65,6 +65,6 @@
             window.sessionStorage.setItem('old_hash', null);
             window.sessionStorage.setItem('old_track', null);
             window.sessionStorage.setItem('old_id', null);
-        };
+        }
     };
 } (window));

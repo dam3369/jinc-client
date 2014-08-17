@@ -4,7 +4,10 @@
             number: document.getElementById('number'),
             unit: document.getElementById('unit'),
             arrow: document.getElementById('arrow'),
-            wallpaper: document.getElementById('wallpaper')
+            home: document.getElementById('home'),
+            wallpaper: document.getElementById('wallpaper'),
+            content: document.getElementById('content'),
+            restore: document.getElementById('restore')
         },
 
         isMetricSytem = function () {
@@ -71,7 +74,8 @@
             } else {
                 margintop = (height - ((height/100)*80)) / 2;
             }
-            document.getElementById('arrow').style.marginTop = margintop.toString() + 'px';
+            element.arrow.style.marginTop = margintop.toString() + 'px';
+            element.home.style.marginTop = margintop.toString() + 'px';
         },
         setActivity: function (activ) {
             if (activ) {
@@ -81,6 +85,21 @@
                 element.wallpaper.classList.remove('active');
                 element.wallpaper.classList.add('inactive');
             }
+        },
+        printHome: function () {
+            element.home.style.display = 'block';
+            element.restore.style.display = 'block';
+            element.arrow.style.display = 'none';
+            element.distance.style.display = 'none';
+        },
+        printArrow: function () {
+            element.home.style.display = 'none';
+            element.restore.style.display = 'none';
+            element.arrow.style.display = 'block';
+            element.distance.style.display = 'block';
+        },
+        printLink: function (url) {
+            document.getElementById('link').value = url;
         }
     };
 

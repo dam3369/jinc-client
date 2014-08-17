@@ -13,6 +13,12 @@
             <header class="header">
                 <h1 class="logo text"><a href="index.html">J'inc!</a></h1>
             </header>
+            <div id="home" class="home text">
+                <p>Copy that link and send it at your friend:</p>
+                <input  id="link" class="link text">
+                <p>them connect with him:</p>
+                <button id="conect" class="btn">connect</button>
+            </div>
             <div id="arrow" class="arrow-container rotate">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="arrow" viewBox="0 0 400 400">
                     <path d="M200,200 m-200, 0 a200,200 0 1,0 400,0 a200,200 0 1,0 -400,0 M200,20 l150,275 l-150,-55 l-150,55 l150,-275"/>
@@ -21,51 +27,45 @@
             <footer id="distance" class="distance text">
                 <p><span id="number" data-value="0">0</span><span id="unit" data-unit="metric">m</span></p>
             </footer>
+            <footer id="restore" class="restore text">
+                <button class="btn">restore old session</button>
+            </footer>
         </div>
     </div>
-    <script type="text/javascript" src="javascript/jinc-ui.js"></script>
     <script type="text/javascript" src="javascript/point.js"></script>
+    <script type="text/javascript" src="javascript/session.js"></script>
+    <script type="text/javascript" src="javascript/jinc-ui.js"></script>
     <script type="text/javascript">
+
+        var me = false,
+            target = false;
+
         document.getElementById('distance').onclick = ui.changeUnit;
-        screen.mozLockOrientation("portrait-primary");
 
-        var opera = point.create([
-                48.870485,
-                2.332379
-            ]),
-            house = point.create([
-                48.843976,
-                2.355059
-            ]),
-            work = point.create([
-                48.869470,
-                2.337584
-            ]),
-            eiffel = point.create([
-                48.858363,
-                2.294452
-            ]),
-            target = opera,
-            me = false,
-            delta = 0;
+        document.getElementById('link').onclick = function () {
+            document.getElementById('link').select();
+        };
 
-        if (window.location.hash === '#home') {
-            target = house;
-        }
+        document.getElementById('conect').onclick = function () {
+            ui.printArrow();
+        };
 
-        if (window.location.hash === '#opera') {
-            target = opera;
-        }
-
-        if (window.location.hash === '#work') {
-            target = work;
-        }
-
-        if (window.location.hash === '#eiffel') {
-            target = eiffel;
-        }
+        document.getElementById('restore').onclick = function () {
+            ui.printArrow();
+            session.restoreOldSession();
+        };
 
         document.body.onresize = ui.onResizeWindow;
+        ui.onResizeWindow();
+
+        session.start();
+
+        if (session.isNew()) {
+            ui.printHome();
+            ui.printLink('io.12.gy/' + session.getHash());
+        } else {
+            ui.printArrow();
+        }
 
         if ("geolocation" in navigator) {
             navigator.geolocation.watchPosition(function (position) {
@@ -74,7 +74,7 @@
 
             window.ondeviceorientation = function (event) {
 
-                if (me !== false) {
+                if (me !== false && target !== false) {
                     delta = (me.getDelta(target, (360 - event.alpha)) * Math.PI / 180);
                     ui.printDistance(me.getDistance(target));
                 }
